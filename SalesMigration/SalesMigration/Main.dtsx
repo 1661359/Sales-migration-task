@@ -11,10 +11,73 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Main"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{2E374A85-64C6-4E4E-B0FD-1E1A8852CBFD}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{F44C6E80-CE34-4902-8438-F35E22012133}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ProductsLog]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{696D1F65-3193-4050-BAE5-15CC386F1E59}"
+      DTS:ObjectName="ProductsLog">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1049"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1251"
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\Sales-migration-task\SalesMigration\SalesMigration\logs\products.log">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{8B67192A-920A-437C-ACA0-CE1BD8412C23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{0177A248-F5E0-440E-976E-A9C2ADA5232D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Price"
+              DTS:DTSID="{82546557-7B09-4CED-98C6-B93B926704AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{585D404C-76D2-486C-89E2-27D16E4F62B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{142AD59D-28DC-497E-A570-AB8F7C563787}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -1736,6 +1799,96 @@ where [refTable].[PersonID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Transfer Products\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1049"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfer Products\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ProductsLog]"
+                  connectionManagerRefId="Package.ConnectionManagers[ProductsLog]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Transfer Products\Aggregate.Outputs[Aggregate Output 1].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Transfer Products\Aggregate.Outputs[Aggregate Output 1].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].Columns[Price]"
+                      cachedDataType="cy"
+                      cachedName="Price"
+                      externalMetadataColumnId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Transfer Products\Aggregate.Outputs[Aggregate Output 1].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Transfer Products\To NewSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Transfer Products\To NewSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      dataType="cy"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
               refId="Package\Transfer Products\From Sales"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -2098,7 +2251,7 @@ where [refTable].[ProductID] = ?</property>
                 <input
                   refId="Package\Transfer Products\To NewSales.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
@@ -2172,6 +2325,11 @@ where [refTable].[ProductID] = ?</property>
               endId="Package\Transfer Products\Aggregate.Inputs[Aggregate Input 1]"
               name="Lookup Match Output"
               startId="Package\Transfer Products\Lookup Product.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Transfer Products.Paths[OLE DB Destination Error Output]"
+              endId="Package\Transfer Products\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Transfer Products\To NewSales.Outputs[OLE DB Destination Error Output]" />
             <path
               refId="Package\Transfer Products.Paths[OLE DB Source Output]"
               endId="Package\Transfer Products\Lookup Product.Inputs[Lookup Input]"
@@ -3521,13 +3679,13 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Transfer Persons"
           TopLeft="111,30" />
         <NodeLayout
-          Size="148,42"
-          Id="Package\Transfer Sales"
-          TopLeft="120,239" />
-        <NodeLayout
           Size="164,42"
           Id="Package\Transfer Products"
           TopLeft="118,121" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Transfer Sales"
+          TopLeft="120,239" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3541,189 +3699,41 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Transfer Persons\Old sales"
           TopLeft="314,2.5" />
         <NodeLayout
-          Size="189,42"
-          Id="Package\Transfer Persons\Lookup by CustomerID"
-          TopLeft="43,209.5" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Transfer Persons\to NewSales"
-          TopLeft="43.0000000000001,515.5" />
-        <NodeLayout
           Size="214,42"
-          Id="Package\Transfer Persons\Names length from 40 to 30"
-          TopLeft="5.50000000000006,413.5" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Transfer Persons\Group customers"
-          TopLeft="57,311.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Lookup Match Output]"
-          TopLeft="137.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Aggregate Output 1]"
-          TopLeft="137.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-25,60"
-              Start="0,0"
-              End="-25,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-21,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21,30"
-                    Point2="-25,30"
-                    Point3="-25,34" />
-                  <mssgle:LineSegment
-                    End="-25,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Data Conversion Output]"
-          TopLeft="112.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\Transfer Persons\Names length from 40 to 30 1"
+          TopLeft="280.5,413.5" />
         <NodeLayout
           Size="190,42"
           Id="Package\Transfer Persons\Lookup by EmployeeID"
           TopLeft="292.5,209.5" />
         <NodeLayout
+          Size="161,42"
+          Id="Package\Transfer Persons\Group customers"
+          TopLeft="57,311.5" />
+        <NodeLayout
           Size="139,42"
           Id="Package\Transfer Persons\to NewSales 1"
           TopLeft="318,515.5" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Transfer Persons\Names length from 40 to 30 1"
-          TopLeft="280.5,413.5" />
+          Size="122,42"
+          Id="Package\Transfer Persons\Multicast"
+          TopLeft="314.5,109.5" />
         <NodeLayout
           Size="163,42"
           Id="Package\Transfer Persons\Group employees"
           TopLeft="306,311.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Lookup Match Output1]"
-          TopLeft="387.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Aggregate Output 11]"
-          TopLeft="387.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Data Conversion Output1]"
-          TopLeft="387.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="122,42"
-          Id="Package\Transfer Persons\Multicast"
-          TopLeft="314.5,109.5" />
+          Size="139,42"
+          Id="Package\Transfer Persons\to NewSales"
+          TopLeft="43.0000000000001,515.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Transfer Persons\Lookup by CustomerID"
+          TopLeft="43,209.5" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Transfer Persons\Names length from 40 to 30"
+          TopLeft="5.50000000000006,413.5" />
         <EdgeLayout
           Id="Package\Transfer Persons.Paths[OLE DB Source Output]"
           TopLeft="375.5,44.5">
@@ -3738,6 +3748,28 @@ where [refTable].[ProductID] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Multicast Output 2]"
+          TopLeft="391,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3781,19 +3813,145 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transfer Persons.Paths[Multicast Output 2]"
-          TopLeft="391,151.5">
+          Id="Package\Transfer Persons.Paths[Lookup Match Output1]"
+          TopLeft="387.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,50.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.5" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Lookup Match Output]"
+          TopLeft="137.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Data Conversion Output1]"
+          TopLeft="387.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Data Conversion Output]"
+          TopLeft="112.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Aggregate Output 11]"
+          TopLeft="387.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons.Paths[Aggregate Output 1]"
+          TopLeft="137.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25,60"
+              Start="0,0"
+              End="-25,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-21,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21,30"
+                    Point2="-25,30"
+                    Point3="-25,34" />
+                  <mssgle:LineSegment
+                    End="-25,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3819,12 +3977,12 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons\Lookup by CustomerID">
+    design-time-name="Package\Transfer Persons\Lookup by EmployeeID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3834,10 +3992,23 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Persons\to NewSales 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3855,12 +4026,12 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons\Lookup by EmployeeID">
+    design-time-name="Package\Transfer Persons\Lookup by CustomerID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3870,7 +4041,150 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transfer Products">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transfer Products\Lookup Product"
+          TopLeft="114,158" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Transfer Products\From Sales"
+          TopLeft="119,55" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Transfer Products\To NewSales"
+          TopLeft="127,375" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Transfer Products\Aggregate"
+          TopLeft="134,269" />
+        <EdgeLayout
+          Id="Package\Transfer Products.Paths[OLE DB Source Output]"
+          TopLeft="188.25,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Products.Paths[Lookup Match Output]"
+          TopLeft="194.75,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,24.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Products.Paths[Aggregate Output 1]"
+          TopLeft="198,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Transfer Products\Flat File Destination"
+          TopLeft="108,461" />
+        <EdgeLayout
+          Id="Package\Transfer Products.Paths[OLE DB Destination Error Output]"
+          TopLeft="196.25,417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,12.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Products\Lookup Product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Products]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3878,7 +4192,20 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons\to NewSales 1">
+    design-time-name="Package\Transfer Products\From Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Products\To NewSales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4117,71 +4444,12 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\Old sales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\Lookup Customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Person]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\Lookup Employee">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Person]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Transfer Sales\Lookup Customer Guid">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4191,30 +4459,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\Lookup Employee Guid">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Employee]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4235,12 +4480,58 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales\Lookup Employee">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Person]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales\Lookup Employee Guid">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Employee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Transfer Sales\Lookup Product">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4250,151 +4541,46 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transfer Products">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Transfer Products\From Sales"
-          TopLeft="119,55" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Transfer Products\To NewSales"
-          TopLeft="127,384" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transfer Products\Lookup Product"
-          TopLeft="114,158" />
-        <EdgeLayout
-          Id="Package\Transfer Products.Paths[OLE DB Source Output]"
-          TopLeft="188.25,97">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Transfer Products\Aggregate"
-          TopLeft="134,269" />
-        <EdgeLayout
-          Id="Package\Transfer Products.Paths[Lookup Match Output]"
-          TopLeft="194.75,200">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,24.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Products.Paths[Aggregate Output 1]"
-          TopLeft="198,311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,73"
-              Start="0,0"
-              End="0,65.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Products\From Sales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Products\To NewSales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Products\Lookup Product">
+    design-time-name="Package\Transfer Sales\Lookup Customer">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Products]</Value>
+          type="q3:string">[dbo].[Person]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales\Old sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
