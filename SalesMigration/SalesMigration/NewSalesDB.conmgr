@@ -4,6 +4,8 @@
   DTS:ObjectName="NewSalesDB"
   DTS:DTSID="{654A2038-9801-49C2-9991-85B0546224AE}"
   DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::NewDbConnectionString]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:Retain="True"
