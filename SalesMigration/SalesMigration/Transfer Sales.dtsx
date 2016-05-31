@@ -12,8 +12,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Transfer Sales"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{1856C2BB-2B41-475E-8B1B-082E04BF2A1C}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{F46C8A75-D64E-48F3-A995-AE895F5976B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -781,95 +781,6 @@
           version="1">
           <components>
             <component
-              refId="Package\Transfer Sales to Temp Table\Check Quantity"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="Check Quantity"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input].Columns[Quantity]"
-                      cachedDataType="i4"
-                      cachedName="Quantity"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Quantity]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Quantity &gt; 0]"
-                  description="Output 1 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Quantity &gt; 0"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Quantity]} &gt; 0</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">Quantity &gt; 0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[to log]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="to log"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Transfer Sales to Temp Table\Convert Price"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -885,7 +796,7 @@
                       refId="Package\Transfer Sales to Temp Table\Convert Price.Inputs[Data Conversion Input].Columns[Price]"
                       cachedDataType="cy"
                       cachedName="Price"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[Price]" />
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Price]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -911,7 +822,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[Price]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Price]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -970,7 +881,14 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Sales.SalesID, Sales.Quantity, Person.FirstName AS E_FN, Person.LastName AS E_LN, Person.MiddleInitial AS E_MI, Person_1.FirstName AS C_FN, 
+                         Person_1.MiddleInitial AS C_MI, Person_1.LastName AS C_LN, Products.Name AS P_Name, Products.Price, Sales.SalesPersonID, Sales.CustomerID, 
+                         Sales.ProductID
+FROM            Person AS Person_1 INNER JOIN
+                         Sales ON Person_1.PersonID = Sales.CustomerID INNER JOIN
+                         Products ON Sales.ProductID = Products.ProductID INNER JOIN
+                         Person ON Sales.SalesPersonID = Person.PersonID
+WHERE        (Sales.Quantity &gt; 0)</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -987,7 +905,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1007,33 +925,6 @@
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      name="CustomerID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                      name="SalesPersonID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
-                      name="ProductID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -1051,6 +942,112 @@
                       lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesID]"
                       name="SalesID"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_FN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_FN]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_FN]"
+                      name="E_FN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_LN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_LN]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_LN]"
+                      name="E_LN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_MI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_MI]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_MI]"
+                      name="E_MI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_FN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_FN]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_FN]"
+                      name="C_FN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_MI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_MI]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_MI]"
+                      name="C_MI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_LN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_LN]"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_LN]"
+                      name="C_LN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[P_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[P_Name]"
+                      length="50"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[P_Name]"
+                      name="P_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                      name="SalesPersonID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1058,6 +1055,49 @@
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[SalesID]"
                       dataType="i4"
                       name="SalesID" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_FN]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_FN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_LN]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_LN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[E_MI]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_MI" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_FN]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_FN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_MI]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_MI" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[C_LN]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_LN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[P_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="P_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="cy"
+                      name="Price" />
                     <externalMetadataColumn
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
                       dataType="i4"
@@ -1070,10 +1110,6 @@
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
                       dataType="i4"
                       name="ProductID" />
-                    <externalMetadataColumn
-                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      dataType="i4"
-                      name="Quantity" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1094,15 +1130,62 @@
                       name="ErrorColumn"
                       specialFlags="2" />
                     <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      name="CustomerID" />
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_FN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_FN]"
+                      name="E_FN" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_LN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_LN]"
+                      name="E_LN" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_MI]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[E_MI]"
+                      name="E_MI" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_FN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_FN]"
+                      name="C_FN" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_MI]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_MI]"
+                      name="C_MI" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_LN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[C_LN]"
+                      name="C_LN" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[P_Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[P_Name]"
+                      name="P_Name" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="cy"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price" />
                     <outputColumn
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
                       dataType="i4"
                       lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
                       name="SalesPersonID" />
+                    <outputColumn
+                      refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
                     <outputColumn
                       refId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[ProductID]"
                       dataType="i4"
@@ -1118,194 +1201,6 @@
                       dataType="i4"
                       lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Error Output].Columns[SalesID]"
                       name="SalesID" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transfer Sales to Temp Table\Lookup Customer"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Customer"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Person]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Person]) [refTable]
-where [refTable].[PersonID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PersonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Sales to Temp Table\Lookup Customer.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input].Columns[CustomerID]"
-                      cachedDataType="i4"
-                      cachedName="CustomerID"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[CustomerID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PersonID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_FirstName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_FirstName]"
-                      name="C_FirstName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">FirstName</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_MiddleInitial]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_MiddleInitial]"
-                      name="C_MiddleInitial"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">MiddleInitial</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_LastName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_LastName]"
-                      name="C_LastName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">LastName</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1368,7 +1263,7 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_FirstName]};#{Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_MiddleInitial]};#{Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_LastName]};</property>
+                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_FN]};#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_MI]};#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_LN]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1392,11 +1287,11 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_FirstName]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="C_FirstName"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_FirstName]">
+                      cachedName="C_FN"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_FN]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1409,11 +1304,11 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_MiddleInitial]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="C_MiddleInitial"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_MiddleInitial]">
+                      cachedName="C_MI"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_MI]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1426,11 +1321,11 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_LastName]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input].Columns[C_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="C_LastName"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output].Columns[C_LastName]">
+                      cachedName="C_LN"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[C_LN]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1504,194 +1399,6 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
               </outputs>
             </component>
             <component
-              refId="Package\Transfer Sales to Temp Table\Lookup Employee"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Employee"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Person]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Person]) [refTable]
-where [refTable].[PersonID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PersonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Sales to Temp Table\Lookup Employee.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input].Columns[SalesPersonID]"
-                      cachedDataType="i4"
-                      cachedName="SalesPersonID"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PersonID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_FirstName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_FirstName]"
-                      name="E_FirstName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">FirstName</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_MiddleInitial]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_MiddleInitial]"
-                      name="E_MiddleInitial"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">MiddleInitial</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_LastName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_LastName]"
-                      name="E_LastName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">LastName</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -1712,7 +1419,7 @@ where [refTable].[PersonID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Employee]) [refTable]
-where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].[LastName] = ?</property>
+where [refTable].[FirstName] = ? and [refTable].[LastName] = ? and [refTable].[MiddleName] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1748,7 +1455,7 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_FirstName]};#{Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_MiddleInitial]};#{Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_LastName]};</property>
+                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_FN]};#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_LN]};#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_MI]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1772,11 +1479,11 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_FirstName]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="E_FirstName"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_FirstName]">
+                      cachedName="E_FN"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_FN]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1789,16 +1496,16 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_MiddleInitial]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="E_MiddleInitial"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_MiddleInitial]">
+                      cachedName="E_LN"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_LN]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">MiddleName</property>
+                          name="JoinToReferenceColumn">LastName</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1806,16 +1513,16 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_LastName]"
+                      refId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input].Columns[E_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="E_LastName"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output].Columns[E_LastName]">
+                      cachedName="E_MI"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[E_MI]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">LastName</property>
+                          name="JoinToReferenceColumn">MiddleName</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1884,179 +1591,6 @@ where [refTable].[FirstName] = ? and [refTable].[MiddleName] = ? and [refTable].
               </outputs>
             </component>
             <component
-              refId="Package\Transfer Sales to Temp Table\Lookup Product"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Product"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Products]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Products]) [refTable]
-where [refTable].[ProductID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Sales to Temp Table\Lookup Product.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input].Columns[ProductID]"
-                      cachedDataType="i4"
-                      cachedName="ProductID"
-                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[ProductID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProductID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="IgnoreFailure"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[P_Name]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="50"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[P_Name]"
-                      name="P_Name"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Name</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[Price]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[Price]"
-                      name="Price"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Price</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Transfer Sales to Temp Table\Lookup Product Guid"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -2113,7 +1647,7 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[P_Name]};#{Package\Transfer Sales to Temp Table\Convert Price.Outputs[Data Conversion Output].Columns[D_Price]};</property>
+                  name="ParameterMap">#{Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[P_Name]};#{Package\Transfer Sales to Temp Table\Convert Price.Outputs[Data Conversion Output].Columns[D_Price]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2137,23 +1671,6 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Inputs[Lookup Input].Columns[P_Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="P_Name"
-                      lineageId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output].Columns[P_Name]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Name</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Inputs[Lookup Input].Columns[D_Price]"
                       cachedDataType="numeric"
                       cachedName="D_Price"
@@ -2164,6 +1681,23 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">Price</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Inputs[Lookup Input].Columns[P_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="P_Name"
+                      lineageId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output].Columns[P_Name]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Name</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2476,34 +2010,19 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
               startId="Package\Transfer Sales to Temp Table\Convert Price.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output]"
-              endId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input]"
+              endId="Package\Transfer Sales to Temp Table\to Temp Sale Table.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
-              startId="Package\Transfer Sales to Temp Table\Lookup Customer.Outputs[Lookup Match Output]" />
+              startId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output1]"
-              endId="Package\Transfer Sales to Temp Table\Lookup Employee.Inputs[Lookup Input]"
+              endId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output2]"
-              endId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Sales to Temp Table\Lookup Employee.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output3]"
-              endId="Package\Transfer Sales to Temp Table\Lookup Product.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output4]"
               endId="Package\Transfer Sales to Temp Table\Convert Price.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
-              startId="Package\Transfer Sales to Temp Table\Lookup Product.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output5]"
-              endId="Package\Transfer Sales to Temp Table\to Temp Sale Table.Inputs[OLE DB Destination Input]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Outputs[Lookup Match Output]" />
+              startId="Package\Transfer Sales to Temp Table\Lookup Employee Guid.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Transfer Sales to Temp Table.Paths[Lookup No Match Output]"
               endId="Package\Transfer Sales to Temp Table\to Invalid Product Log.Inputs[Flat File Destination Input]"
@@ -2511,14 +2030,9 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
               startId="Package\Transfer Sales to Temp Table\Lookup Product Guid.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Transfer Sales to Temp Table.Paths[OLE DB Source Output]"
-              endId="Package\Transfer Sales to Temp Table\Check Quantity.Inputs[Conditional Split Input]"
+              endId="Package\Transfer Sales to Temp Table\Lookup Customer Guid.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Transfer Sales to Temp Table\from Old Sales.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Transfer Sales to Temp Table.Paths[Quantity &gt; 0]"
-              endId="Package\Transfer Sales to Temp Table\Lookup Customer.Inputs[Lookup Input]"
-              name="Quantity &gt; 0"
-              startId="Package\Transfer Sales to Temp Table\Check Quantity.Outputs[Quantity &gt; 0]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2528,7 +2042,7 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{C5F56ABD-18D5-4992-8252-2E16D51E107F}"
+      DTS:DTSID="{CF576524-10DA-43AE-B4E6-08BB2336B37D}"
       DTS:From="Package\Transfer Sales"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2573,29 +2087,29 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
         <NodeLayout
           Size="194,42"
           Id="Package\Create Temp Sale Table"
-          TopLeft="18.5,5.5" />
+          TopLeft="229.5,16.5" />
         <NodeLayout
           Size="186,42"
           Id="Package\Drop Temp Sale Table"
-          TopLeft="367,513.5" />
+          TopLeft="227.5,611.5" />
         <NodeLayout
           Size="220,42"
           Id="Package\Transfer Sales to Temp Table"
-          TopLeft="5.50000000000006,210.5" />
+          TopLeft="215.5,166.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="115.5,47.5">
+          TopLeft="326,58.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,163"
+              EndConnector="0,108"
               Start="0,0"
-              End="0,155.5">
+              End="0,100.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,155.5" />
+                    End="0,100.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2606,18 +2120,18 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="225.5,231.25">
+          TopLeft="327.75,208.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="154.5,0"
+              EndConnector="0,164.5"
               Start="0,0"
-              End="147,0">
+              End="0,157">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="147,0" />
+                    End="0,157" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2628,18 +2142,18 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="457,354">
+          TopLeft="322.75,511">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,159.5"
+              EndConnector="0,100.5"
               Start="0,0"
-              End="0,152">
+              End="0,93">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,152" />
+                    End="0,93" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2651,25 +2165,25 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
         <NodeLayout
           Size="148,42"
           Id="Package\Transfer Sales"
-          TopLeft="16.5,5.5" />
+          TopLeft="131.5,10.5" />
         <NodeLayout
           Size="170,42"
           Id="Package\Transfer SaleItems"
-          TopLeft="5.50000000000001,107.5" />
+          TopLeft="115.5,105.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="90.5,47.5">
+          TopLeft="203,52.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,53"
               Start="0,0"
-              End="0,52.5">
+              End="0,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2683,10 +2197,10 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
           ParentId="Package"
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="181,204"
-          Size="181,248"
+          PanelSize="390,204"
+          Size="390,246"
           Id="dceeae2c-16f7-4e3d-8dc8-754bbe2190d1"
-          TopLeft="363,161.5">
+          TopLeft="123.5,319.5">
           <GroupLayout.ChildrenIds>
             <s:String>Package\Transfer Sales</s:String>
             <s:String>Package\Transfer SaleItems</s:String>
@@ -2696,488 +2210,6 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Transfer Sales">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Transfer Sales\to Sale Table"
-          TopLeft="88,214" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\Transfer Sales\from Temp Table"
-          TopLeft="75,39" />
-        <EdgeLayout
-          Id="Package\Transfer Sales.Paths[OLE DB Source Output]"
-          TopLeft="157.5,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,133"
-              Start="0,0"
-              End="0,125.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,125.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\to Sale Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales\from Temp Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transfer Sales to Temp Table">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Transfer Sales to Temp Table\to Temp Sale Table"
-          TopLeft="100,867" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Transfer Sales to Temp Table\from Old Sales"
-          TopLeft="258,0" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Transfer Sales to Temp Table\to Invalid Product Log"
-          TopLeft="804,860" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Transfer Sales to Temp Table\Check Quantity"
-          TopLeft="248,86" />
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Quantity &gt; 0]"
-          TopLeft="325.75,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,191"
-              Start="0,0"
-              End="0,183.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,183.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.85572265625,86.033203125,57.7114453125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[OLE DB Source Output]"
-          TopLeft="333,42">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9,44"
-              Start="0,0"
-              End="-9,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="-4,22" />
-                  <mssgle:LineSegment
-                    End="-5,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,22"
-                    Point2="-9,22"
-                    Point3="-9,26" />
-                  <mssgle:LineSegment
-                    End="-9,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup No Match Output]"
-          TopLeft="643,881.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="161,0"
-              Start="0,0"
-              End="153.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="153.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="20.94361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output5]"
-          TopLeft="464,885">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-192,0"
-              Start="0,0"
-              End="-184.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-184.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-140.44138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output3]"
-          TopLeft="682.5,560">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-131.5,153"
-              Start="0,0"
-              End="-131.5,145.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,72.5"
-                    Point2="0,76.5"
-                    Point3="-4,76.5" />
-                  <mssgle:LineSegment
-                    End="-127.5,76.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-127.5,76.5"
-                    Point2="-131.5,76.5"
-                    Point3="-131.5,80.5" />
-                  <mssgle:LineSegment
-                    End="-131.5,145.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-113.94138671875,81.5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output1]"
-          TopLeft="422,444.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="176,0"
-              Start="0,0"
-              End="168.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="168.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="36.05861328125,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Employee"
-          TopLeft="16.5,5.5" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Employee Guid"
-          TopLeft="5.5,98.5" />
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output2]"
-          TopLeft="99.25,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <GroupLayout
-          Text="Join Employee Guid"
-          ParentId="Package\Transfer Sales to Temp Table"
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="200,196"
-          Size="200,239"
-          Id="a96cbae3-eec7-4712-bcab-93b6793215b6"
-          TopLeft="581.777777777778,377">
-          <GroupLayout.ChildrenIds>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Employee</s:String>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Employee Guid</s:String>
-            <s:String>Package\Transfer Sales to Temp Table.Paths[Lookup Match Output2]</s:String>
-          </GroupLayout.ChildrenIds>
-        </GroupLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Customer"
-          TopLeft="18,5.5" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Customer Guid"
-          TopLeft="5.50000000000001,107.5" />
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output]"
-          TopLeft="99.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <GroupLayout
-          Text="Join Customer Guid"
-          ParentId="Package\Transfer Sales to Temp Table"
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="199,205"
-          Size="199,248"
-          Id="ceb932cc-dc97-4f82-abc4-f74a1faf38f6"
-          TopLeft="228.166666666667,269.5">
-          <GroupLayout.ChildrenIds>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Customer</s:String>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Customer Guid</s:String>
-            <s:String>Package\Transfer Sales to Temp Table.Paths[Lookup Match Output]</s:String>
-          </GroupLayout.ChildrenIds>
-        </GroupLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Product"
-          TopLeft="16.5,5.5" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Transfer Sales to Temp Table\Convert Price"
-          TopLeft="17.5,74.5" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Transfer Sales to Temp Table\Lookup Product Guid"
-          TopLeft="5.5,153.5" />
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Data Conversion Output]"
-          TopLeft="92.25,116.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output4]"
-          TopLeft="91.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,3.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <GroupLayout
-          Text="Join Product Guid"
-          ParentId="Package\Transfer Sales to Temp Table"
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="190,250"
-          Size="190,293"
-          Id="558fcdbd-383d-422b-955a-5754c0564b1c"
-          TopLeft="457.5,663.5">
-          <GroupLayout.ChildrenIds>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Product</s:String>
-            <s:String>Package\Transfer Sales to Temp Table\Convert Price</s:String>
-            <s:String>Package\Transfer Sales to Temp Table\Lookup Product Guid</s:String>
-            <s:String>Package\Transfer Sales to Temp Table.Paths[Data Conversion Output]</s:String>
-            <s:String>Package\Transfer Sales to Temp Table.Paths[Lookup Match Output4]</s:String>
-          </GroupLayout.ChildrenIds>
-        </GroupLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales to Temp Table\to Temp Sale Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales to Temp Table\Lookup Product">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Products]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Sales to Temp Table\Lookup Product Guid">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Product]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Transfer SaleItems">
     <LayoutInfo>
@@ -3217,7 +2249,7 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer SaleItems\to SaleItem Table">
+    design-time-name="Package\Transfer SaleItems\from Temp Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3230,7 +2262,7 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer SaleItems\from Temp Table">
+    design-time-name="Package\Transfer SaleItems\to SaleItem Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3239,6 +2271,362 @@ where [refTable].[Name] = ? and [refTable].[Price] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transfer Sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Transfer Sales\from Temp Table"
+          TopLeft="75,39" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Transfer Sales\to Sale Table"
+          TopLeft="88,214" />
+        <EdgeLayout
+          Id="Package\Transfer Sales.Paths[OLE DB Source Output]"
+          TopLeft="157.5,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,133"
+              Start="0,0"
+              End="0,125.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,125.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales\from Temp Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales\to Sale Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transfer Sales to Temp Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Transfer Sales to Temp Table\to Invalid Product Log"
+          TopLeft="5.50000000000011,617.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Transfer Sales to Temp Table\Convert Price"
+          TopLeft="265,413.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Transfer Sales to Temp Table\to Temp Sale Table"
+          TopLeft="251,617.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Transfer Sales to Temp Table\Lookup Customer Guid"
+          TopLeft="243,209.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Transfer Sales to Temp Table\Lookup Employee Guid"
+          TopLeft="242.5,311.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Transfer Sales to Temp Table\from Old Sales"
+          TopLeft="255,84.5" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Transfer Sales to Temp Table\Lookup Product Guid"
+          TopLeft="247.5,515.5" />
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[Lookup No Match Output]"
+          TopLeft="308.5,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-210.5,60"
+              Start="0,0"
+              End="-210.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3189368770764"
+                    Point2="0,24.3189368770764"
+                    Point3="-4,24.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-206.5,24.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-206.5,24.3189368770764"
+                    Point2="-210.5,24.3189368770764"
+                    Point3="-210.5,28.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-210.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-161.05638671875,29.3189368770764,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output2]"
+          TopLeft="337,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output1]"
+          TopLeft="337,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[Lookup Match Output]"
+          TopLeft="365.5,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.5,60"
+              Start="0,0"
+              End="-28.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3189368770764"
+                    Point2="0,24.3189368770764"
+                    Point3="-4,24.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-24.5,24.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.5,24.3189368770764"
+                    Point2="-28.5,24.3189368770764"
+                    Point3="-28.5,28.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-28.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.44138671875,29.3189368770764,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[Data Conversion Output]"
+          TopLeft="337,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Sales to Temp Table.Paths[OLE DB Source Output]"
+          TopLeft="333.5,126.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales to Temp Table\to Temp Sale Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales to Temp Table\Lookup Customer Guid">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales to Temp Table\Lookup Employee Guid">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Employee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales to Temp Table\from Old Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Sales to Temp Table\Lookup Product Guid">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Product]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Main"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{4FCC1569-A6C8-46F7-98C0-AFDFD6676FE0}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{9C1CFC65-9234-42D8-B19F-76E940121C15}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -395,23 +395,23 @@
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[C_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="FirstName"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[FirstName]" />
+                      cachedName="C_FN"
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[C_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[MiddleInitial]" />
+                      cachedName="C_MI"
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_MI]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input].Columns[C_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="LastName"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[LastName]" />
+                      cachedName="C_LN"
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_LN]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -424,20 +424,20 @@
                   synchronousInputId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_FN]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]"
-                      name="ShortFirstName"
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_FN]"
+                      name="S_C_FN"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[FirstName]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_FN]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -445,20 +445,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_MI]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]"
-                      name="ShortMiddleInitial"
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_MI]"
+                      name="S_C_MI"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[MiddleInitial]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_MI]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -466,20 +466,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]"
+                      refId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_LN]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]"
-                      name="ShortLastName"
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_LN]"
+                      name="S_C_LN"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[LastName]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_LN]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -526,23 +526,23 @@
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[E_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="FirstName"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[FirstName]" />
+                      cachedName="E_FN"
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[E_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[MiddleInitial]" />
+                      cachedName="E_LN"
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_LN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input].Columns[E_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="LastName"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[LastName]" />
+                      cachedName="E_MI"
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_MI]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -555,20 +555,20 @@
                   synchronousInputId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_FN]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]"
-                      name="ShortFirstName"
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_FN]"
+                      name="S_E_FN"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[FirstName]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_FN]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -576,20 +576,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_LN]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]"
-                      name="ShortMiddleInitial"
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_LN]"
+                      name="S_E_LN"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[MiddleInitial]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_LN]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -597,20 +597,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]"
+                      refId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_MI]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="30"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]"
-                      name="ShortLastName"
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_MI]"
+                      name="S_E_MI"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[LastName]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_MI]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -669,7 +669,13 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Person.FirstName AS C_FN, Person.MiddleInitial AS C_MI, Person.LastName AS C_LN, Person_1.FirstName AS E_FN, Person_1.MiddleInitial AS E_MI, 
+                         Person_1.LastName AS E_LN, Sales.SalesID, Sales.SalesPersonID, Sales.CustomerID, Sales.ProductID, Sales.Quantity, Products.Name AS P_Name, 
+                         Products.Price
+FROM            Person INNER JOIN
+                         Sales ON Person.PersonID = Sales.CustomerID INNER JOIN
+                         Products ON Sales.ProductID = Products.ProductID INNER JOIN
+                         Person AS Person_1 ON Sales.SalesPersonID = Person_1.PersonID</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -686,7 +692,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -741,6 +747,85 @@
                       lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
                       name="Quantity"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_FN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_FN]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_FN]"
+                      name="C_FN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_MI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_MI]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_MI]"
+                      name="C_MI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_LN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_LN]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_LN]"
+                      name="C_LN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_FN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_FN]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_FN]"
+                      name="E_FN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_MI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_MI]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_MI]"
+                      name="E_MI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_LN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_LN]"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_LN]"
+                      name="E_LN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[P_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[P_Name]"
+                      length="50"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[P_Name]"
+                      name="P_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -764,6 +849,45 @@
                       refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
                       dataType="i4"
                       name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_FN]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_FN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_MI]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_MI" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[C_LN]"
+                      dataType="wstr"
+                      length="40"
+                      name="C_LN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_FN]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_FN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_MI]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_MI" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[E_LN]"
+                      dataType="wstr"
+                      length="40"
+                      name="E_LN" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[P_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="P_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="cy"
+                      name="Price" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -771,6 +895,42 @@
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_FN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_FN]"
+                      name="C_FN" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_MI]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_MI]"
+                      name="C_MI" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_LN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[C_LN]"
+                      name="C_LN" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_FN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_FN]"
+                      name="E_FN" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_MI]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_MI]"
+                      name="E_MI" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_LN]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[E_LN]"
+                      name="E_LN" />
                     <outputColumn
                       refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -798,6 +958,17 @@
                       dataType="i4"
                       lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[ProductID]"
                       name="ProductID" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[P_Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[P_Name]"
+                      name="P_Name" />
+                    <outputColumn
+                      refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="cy"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price" />
                     <outputColumn
                       refId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Error Output].Columns[Quantity]"
                       dataType="i4"
@@ -845,23 +1016,23 @@
                   name="Aggregate Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[C_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="FirstName"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[FirstName]" />
+                      cachedName="C_FN"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[C_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[MiddleInitial]" />
+                      cachedName="C_MI"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_MI]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1].Columns[C_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="LastName"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[LastName]" />
+                      cachedName="C_LN"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_LN]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -883,17 +1054,17 @@
                   </properties>
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_FN]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[FirstName]"
-                      name="FirstName">
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_FN]"
+                      name="C_FN">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[FirstName]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_FN]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -910,17 +1081,17 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_MI]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[MiddleInitial]"
-                      name="MiddleInitial">
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_MI]"
+                      name="C_MI">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[MiddleInitial]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_MI]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -937,17 +1108,17 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_LN]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[LastName]"
-                      name="LastName">
+                      lineageId="Package\Transfer Persons and Products\Group Customers.Outputs[Aggregate Output 1].Columns[C_LN]"
+                      name="C_LN">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[LastName]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[C_LN]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1005,23 +1176,23 @@
                   name="Aggregate Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[E_FN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="FirstName"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[FirstName]" />
+                      cachedName="E_FN"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[E_LN]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[MiddleInitial]" />
+                      cachedName="E_LN"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_LN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1].Columns[E_MI]"
                       cachedDataType="wstr"
                       cachedLength="40"
-                      cachedName="LastName"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[LastName]" />
+                      cachedName="E_MI"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_MI]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1043,17 +1214,17 @@
                   </properties>
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[FirstName]"
+                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_FN]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[FirstName]"
-                      name="FirstName">
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_FN]"
+                      name="E_FN">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[FirstName]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_FN]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1070,17 +1241,17 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[MiddleInitial]"
+                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_LN]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[MiddleInitial]"
-                      name="MiddleInitial">
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_LN]"
+                      name="E_LN">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[MiddleInitial]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_LN]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1097,17 +1268,17 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[LastName]"
+                      refId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_MI]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[LastName]"
-                      name="LastName">
+                      lineageId="Package\Transfer Persons and Products\Group employees.Outputs[Aggregate Output 1].Columns[E_MI]"
+                      name="E_MI">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[LastName]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[E_MI]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1165,16 +1336,16 @@
                   name="Aggregate Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\Group products.Inputs[Aggregate Input 1].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Name]" />
-                    <inputColumn
                       refId="Package\Transfer Persons and Products\Group products.Inputs[Aggregate Input 1].Columns[Price]"
                       cachedDataType="cy"
                       cachedName="Price"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Price]" />
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Transfer Persons and Products\Group products.Inputs[Aggregate Input 1].Columns[P_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="P_Name"
+                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[P_Name]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1196,17 +1367,17 @@
                   </properties>
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[Name]"
+                      refId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[P_Name]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[Name]"
-                      name="Name">
+                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[P_Name]"
+                      name="P_Name">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Name]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[P_Name]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1232,7 +1403,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Price]}</property>
+                          name="AggregationColumnId">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[Price]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -1254,557 +1425,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Transfer Persons and Products\Lookup by CustomerID"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup by CustomerID"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Person]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Person]) [refTable]
-where [refTable].[PersonID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PersonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[CustomerID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Persons and Products\Lookup by CustomerID.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input].Columns[CustomerID]"
-                      cachedDataType="i4"
-                      cachedName="CustomerID"
-                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[CustomerID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PersonID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[FirstName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[FirstName]"
-                      name="FirstName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">FirstName</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      name="MiddleInitial"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">MiddleInitial</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[LastName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output].Columns[LastName]"
-                      name="LastName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">LastName</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transfer Persons and Products\Lookup by EmployeeID"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup by EmployeeID"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Person]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Person]) [refTable]
-where [refTable].[PersonID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PersonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input].Columns[SalesPersonID]"
-                      cachedDataType="i4"
-                      cachedName="SalesPersonID"
-                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[SalesPersonID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PersonID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[FirstName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[FirstName]"
-                      name="FirstName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">FirstName</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      name="MiddleInitial"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">MiddleInitial</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[LastName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="40"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output].Columns[LastName]"
-                      name="LastName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">LastName</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transfer Persons and Products\Lookup Product"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Product"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Products]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Products]) [refTable]
-where [refTable].[ProductID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[ProductID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transfer Persons and Products\Lookup Product.Connections[OleDbConnection]"
-                  connectionManagerID="{231364D0-9BE5-4738-BD04-68E27CC0C18E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SalesDB]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input].Columns[ProductID]"
-                      cachedDataType="i4"
-                      cachedName="ProductID"
-                      lineageId="Package\Transfer Persons and Products\from Sales.Outputs[OLE DB Source Output].Columns[ProductID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProductID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Name]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="50"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Name]"
-                      name="Name"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Name</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Price]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output].Columns[Price]"
-                      name="Price"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Price</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Transfer Persons and Products\Multicast"
               componentClassID="Microsoft.Multicast"
               contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1818,6 +1438,13 @@ where [refTable].[ProductID] = ?</property>
                 </input>
               </inputs>
               <outputs>
+                <output
+                  refId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 4]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 4"
+                  synchronousInputId="Package\Transfer Persons and Products\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
                 <output
                   refId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 1]"
                   deleteOutputOnPathDetached="true"
@@ -1834,16 +1461,9 @@ where [refTable].[ProductID] = ?</property>
                 </output>
                 <output
                   refId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 3]"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 3"
-                  synchronousInputId="Package\Transfer Persons and Products\Multicast.Inputs[Multicast Input 1]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 4]"
                   dangling="true"
                   deleteOutputOnPathDetached="true"
-                  name="Multicast Output 4"
+                  name="Multicast Output 3"
                   synchronousInputId="Package\Transfer Persons and Products\Multicast.Inputs[Multicast Input 1]">
                   <externalMetadataColumns />
                 </output>
@@ -1922,26 +1542,26 @@ where [refTable].[ProductID] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[ShortFirstName]"
+                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[S_C_FN]"
                       cachedDataType="wstr"
                       cachedLength="30"
-                      cachedName="ShortFirstName"
+                      cachedName="S_C_FN"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]" />
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[ShortMiddleInitial]"
+                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[S_C_MI]"
                       cachedDataType="wstr"
                       cachedLength="30"
-                      cachedName="ShortMiddleInitial"
+                      cachedName="S_C_MI"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]" />
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_MI]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[ShortLastName]"
+                      refId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].Columns[S_C_LN]"
                       cachedDataType="wstr"
                       cachedLength="30"
-                      cachedName="ShortLastName"
+                      cachedName="S_C_LN"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Customer Table.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]" />
+                      lineageId="Package\Transfer Persons and Products\Customers name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_C_LN]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2065,26 +1685,26 @@ where [refTable].[ProductID] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[ShortFirstName]"
+                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[S_E_FN]"
                       cachedDataType="wstr"
                       cachedLength="30"
-                      cachedName="ShortFirstName"
+                      cachedName="S_E_FN"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortFirstName]" />
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_FN]" />
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[ShortMiddleInitial]"
+                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[S_E_LN]"
                       cachedDataType="wstr"
                       cachedLength="30"
-                      cachedName="ShortMiddleInitial"
-                      externalMetadataColumnId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortMiddleInitial]" />
-                    <inputColumn
-                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[ShortLastName]"
-                      cachedDataType="wstr"
-                      cachedLength="30"
-                      cachedName="ShortLastName"
+                      cachedName="S_E_LN"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[ShortLastName]" />
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_LN]" />
+                    <inputColumn
+                      refId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].Columns[S_E_MI]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="S_E_MI"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\to Employee Table.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\Transfer Persons and Products\Employees name length from 40 to 30.Outputs[Data Conversion Output].Columns[S_E_MI]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2208,19 +1828,19 @@ where [refTable].[ProductID] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[Name]" />
-                    <inputColumn
                       refId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].Columns[D_Price]"
                       cachedDataType="numeric"
                       cachedName="D_Price"
                       cachedPrecision="18"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       lineageId="Package\Transfer Persons and Products\Convert Price.Outputs[Data Conversion Output].Columns[D_Price]" />
+                    <inputColumn
+                      refId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].Columns[P_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="P_Name"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\to Product Table.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[P_Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2298,18 +1918,18 @@ where [refTable].[ProductID] = ?</property>
                   name="Flat File Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[Name]" />
-                    <inputColumn
                       refId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].Columns[Price]"
                       cachedDataType="cy"
                       cachedName="Price"
                       externalMetadataColumnId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].ExternalColumns[Price]"
                       lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].Columns[P_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="P_Name"
+                      externalMetadataColumnId="Package\Transfer Persons and Products\to Wrong Price Log.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Transfer Persons and Products\Group products.Outputs[Aggregate Output 1].Columns[P_Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2447,35 +2067,20 @@ where [refTable].[ProductID] = ?</property>
               name="invalid price"
               startId="Package\Transfer Persons and Products\Check Price.Outputs[invalid price]" />
             <path
-              refId="Package\Transfer Persons and Products.Paths[Lookup Match Output2]"
-              endId="Package\Transfer Persons and Products\Group products.Inputs[Aggregate Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Persons and Products\Lookup Product.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Transfer Persons and Products.Paths[Lookup Match Output]"
-              endId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Persons and Products\Lookup by CustomerID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Transfer Persons and Products.Paths[Lookup Match Output1]"
-              endId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Transfer Persons and Products\Lookup by EmployeeID.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\Transfer Persons and Products.Paths[Multicast Output 1]"
-              endId="Package\Transfer Persons and Products\Lookup by CustomerID.Inputs[Lookup Input]"
+              endId="Package\Transfer Persons and Products\Group employees.Inputs[Aggregate Input 1]"
               name="Multicast Output 1"
               startId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 1]" />
             <path
               refId="Package\Transfer Persons and Products.Paths[Multicast Output 2]"
-              endId="Package\Transfer Persons and Products\Lookup by EmployeeID.Inputs[Lookup Input]"
+              endId="Package\Transfer Persons and Products\Group products.Inputs[Aggregate Input 1]"
               name="Multicast Output 2"
               startId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 2]" />
             <path
-              refId="Package\Transfer Persons and Products.Paths[Multicast Output 3]"
-              endId="Package\Transfer Persons and Products\Lookup Product.Inputs[Lookup Input]"
-              name="Multicast Output 3"
-              startId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 3]" />
+              refId="Package\Transfer Persons and Products.Paths[Multicast Output 4]"
+              endId="Package\Transfer Persons and Products\Group Customers.Inputs[Aggregate Input 1]"
+              name="Multicast Output 4"
+              startId="Package\Transfer Persons and Products\Multicast.Outputs[Multicast Output 4]" />
             <path
               refId="Package\Transfer Persons and Products.Paths[OLE DB Source Output]"
               endId="Package\Transfer Persons and Products\Check Quantity.Inputs[Conditional Split Input]"
@@ -2572,15 +2177,11 @@ where [refTable].[ProductID] = ?</property>
     design-time-name="Package\Transfer Persons and Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
         <NodeLayout
           Size="131,42"
           Id="Package\Transfer Persons and Products\from Sales"
-          TopLeft="385,2.5" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\Transfer Persons and Products\Multicast"
-          TopLeft="361.5,207.5" />
+          TopLeft="380,1.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\Transfer Persons and Products\Check Quantity"
@@ -2589,142 +2190,10 @@ where [refTable].[ProductID] = ?</property>
           Size="188,42"
           Id="Package\Transfer Persons and Products\to Wrong Quantity Log"
           TopLeft="609.5,141.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Quantity &gt; 0]"
-          TopLeft="422.5,117.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,90"
-              Start="0,0"
-              End="0,82.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,82.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.85572265625,35.533203125,57.7114453125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[OLE DB Source Output]"
-          TopLeft="448.5,44.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Multicast Output 3]"
-          TopLeft="451,249.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="292,167.5"
-              Start="0,0"
-              End="292,160">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.2219251336898" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,54.2219251336898"
-                    Point2="0,58.2219251336898"
-                    Point3="4,58.2219251336898" />
-                  <mssgle:LineSegment
-                    End="288,58.2219251336898" />
-                  <mssgle:CubicBezierSegment
-                    Point1="288,58.2219251336898"
-                    Point2="292,58.2219251336898"
-                    Point3="292,62.2219251336898" />
-                  <mssgle:LineSegment
-                    End="292,160" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Multicast Output 2]"
-          TopLeft="422.25,249.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,165.5"
-              Start="0,0"
-              End="0,158">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,158" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Multicast Output 1]"
-          TopLeft="394,249.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-241.5,162.5"
-              Start="0,0"
-              End="-241.5,155">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4839572192513" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,52.4839572192513"
-                    Point2="0,56.4839572192513"
-                    Point3="-4,56.4839572192513" />
-                  <mssgle:LineSegment
-                    End="-237.5,56.4839572192513" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-237.5,56.4839572192513"
-                    Point2="-241.5,56.4839572192513"
-                    Point3="-241.5,60.4839572192513" />
-                  <mssgle:LineSegment
-                    End="-241.5,155" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Transfer Persons and Products\Multicast"
+          TopLeft="356.5,208.5" />
         <EdgeLayout
           Id="Package\Transfer Persons and Products.Paths[Error Log]"
           TopLeft="470.5,117.5">
@@ -2761,6 +2230,52 @@ where [refTable].[ProductID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons and Products.Paths[Quantity &gt; 0]"
+          TopLeft="420,117.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,91"
+              Start="0,0"
+              End="0,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.85572265625,36.033203125,57.7114453125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons and Products.Paths[OLE DB Source Output]"
+          TopLeft="446,43.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="163,42"
           Id="Package\Transfer Persons and Products\Group Customers"
@@ -2770,49 +2285,9 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Transfer Persons and Products\to Customer Table"
           TopLeft="53.0000000000001,311.5" />
         <NodeLayout
-          Size="189,42"
-          Id="Package\Transfer Persons and Products\Lookup by CustomerID"
-          TopLeft="46.9999999999999,5.5" />
-        <NodeLayout
           Size="261,42"
           Id="Package\Transfer Persons and Products\Customers name length from 40 to 30"
           TopLeft="5.5,206.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Lookup Match Output]"
-          TopLeft="141.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-18,57"
-              Start="0,0"
-              End="-18,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="-4,28.5" />
-                  <mssgle:LineSegment
-                    End="-14,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14,28.5"
-                    Point2="-18,28.5"
-                    Point3="-18,32.5" />
-                  <mssgle:LineSegment
-                    End="-18,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-57.19138671875,33.5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transfer Persons and Products.Paths[Data Conversion Output]"
           TopLeft="136.5,248.5">
@@ -2881,9 +2356,7 @@ where [refTable].[ProductID] = ?</property>
           <GroupLayout.ChildrenIds>
             <s:String>Package\Transfer Persons and Products\Group Customers</s:String>
             <s:String>Package\Transfer Persons and Products\to Customer Table</s:String>
-            <s:String>Package\Transfer Persons and Products\Lookup by CustomerID</s:String>
             <s:String>Package\Transfer Persons and Products\Customers name length from 40 to 30</s:String>
-            <s:String>Package\Transfer Persons and Products.Paths[Lookup Match Output]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Data Conversion Output]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Aggregate Output 1]</s:String>
           </GroupLayout.ChildrenIds>
@@ -2893,10 +2366,6 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Transfer Persons and Products\Employees name length from 40 to 30"
           TopLeft="5.5,208.5" />
         <NodeLayout
-          Size="190,42"
-          Id="Package\Transfer Persons and Products\Lookup by EmployeeID"
-          TopLeft="19.5,5.5" />
-        <NodeLayout
           Size="168,42"
           Id="Package\Transfer Persons and Products\to Employee Table"
           TopLeft="47,311.5" />
@@ -2904,30 +2373,6 @@ where [refTable].[ProductID] = ?</property>
           Size="163,42"
           Id="Package\Transfer Persons and Products\Group employees"
           TopLeft="33,107.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Lookup Match Output1]"
-          TopLeft="114.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transfer Persons and Products.Paths[Data Conversion Output1]"
           TopLeft="133.75,250.5">
@@ -2995,18 +2440,12 @@ where [refTable].[ProductID] = ?</property>
           TopLeft="307,366">
           <GroupLayout.ChildrenIds>
             <s:String>Package\Transfer Persons and Products\Employees name length from 40 to 30</s:String>
-            <s:String>Package\Transfer Persons and Products\Lookup by EmployeeID</s:String>
             <s:String>Package\Transfer Persons and Products\to Employee Table</s:String>
             <s:String>Package\Transfer Persons and Products\Group employees</s:String>
-            <s:String>Package\Transfer Persons and Products.Paths[Lookup Match Output1]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Data Conversion Output1]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Aggregate Output 11]</s:String>
           </GroupLayout.ChildrenIds>
         </GroupLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transfer Persons and Products\Lookup Product"
-          TopLeft="65.5,7.5" />
         <NodeLayout
           Size="159,42"
           Id="Package\Transfer Persons and Products\to Product Table"
@@ -3023,30 +2462,6 @@ where [refTable].[ProductID] = ?</property>
           Size="144,42"
           Id="Package\Transfer Persons and Products\Convert Price"
           TopLeft="75.5,198.5" />
-        <EdgeLayout
-          Id="Package\Transfer Persons and Products.Paths[Lookup Match Output2]"
-          TopLeft="145.5,49.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70"
-              Start="0,0"
-              End="0,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,25.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transfer Persons and Products.Paths[Price &gt; 0]"
           TopLeft="139.833333333333,307.5">
@@ -3079,7 +2494,7 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-47.9798697916667,31.4568081991215,41.12640625,9.568359375"
+              BoundingBox="-47.9798697916666,31.4568081991215,41.12640625,9.568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3189,12 +2604,10 @@ where [refTable].[ProductID] = ?</property>
           Id="d3d94302-a2b9-4f3d-8be7-64627431c7ff"
           TopLeft="600,366">
           <GroupLayout.ChildrenIds>
-            <s:String>Package\Transfer Persons and Products\Lookup Product</s:String>
             <s:String>Package\Transfer Persons and Products\to Product Table</s:String>
             <s:String>Package\Transfer Persons and Products\Group products</s:String>
             <s:String>Package\Transfer Persons and Products\Check Price</s:String>
             <s:String>Package\Transfer Persons and Products\Convert Price</s:String>
-            <s:String>Package\Transfer Persons and Products.Paths[Lookup Match Output2]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Price &gt; 0]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Aggregate Output 12]</s:String>
             <s:String>Package\Transfer Persons and Products.Paths[Data Conversion Output2]</s:String>
@@ -3202,47 +2615,101 @@ where [refTable].[ProductID] = ?</property>
             <s:String>Package\Transfer Persons and Products.Paths[invalid price]</s:String>
           </GroupLayout.ChildrenIds>
         </GroupLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons and Products.Paths[Multicast Output 4]"
+          TopLeft="389,250.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-254.5,259.5"
+              Start="0,0"
+              End="-254.5,252">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.2005347593583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,86.2005347593583"
+                    Point2="0,90.2005347593583"
+                    Point3="-4,90.2005347593583" />
+                  <mssgle:LineSegment
+                    End="-250.5,90.2005347593583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250.5,90.2005347593583"
+                    Point2="-254.5,90.2005347593583"
+                    Point3="-254.5,94.2005347593583" />
+                  <mssgle:LineSegment
+                    End="-254.5,252" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons and Products.Paths[Multicast Output 1]"
+          TopLeft="419.5,250.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,266.5"
+              Start="0,0"
+              End="0,259">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,259" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Persons and Products.Paths[Multicast Output 2]"
+          TopLeft="446,250.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="303,278.5"
+              Start="0,0"
+              End="303,271">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.8048128342246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,92.8048128342246"
+                    Point2="0,96.8048128342246"
+                    Point3="4,96.8048128342246" />
+                  <mssgle:LineSegment
+                    End="299,96.8048128342246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="299,96.8048128342246"
+                    Point2="303,96.8048128342246"
+                    Point3="303,100.804812834225" />
+                  <mssgle:LineSegment
+                    End="303,271" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Transfer Persons and Products\from Sales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons and Products\Lookup Product">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Products]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons and Products\to Customer Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3268,48 +2735,28 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons and Products\Lookup by CustomerID">
+    design-time-name="Package\Transfer Persons and Products\to Product Table">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Person]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer Persons and Products\Lookup by EmployeeID">
+    design-time-name="Package\Transfer Persons and Products\to Customer Table">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Person]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
